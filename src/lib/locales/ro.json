@@ -1,0 +1,186 @@
+{
+  "nav": {
+    "ourHoney": "Mierea Noastră",
+    "ourStory": "Povestea Noastră",
+    "journal": "Jurnal",
+    "contact": "Contact",
+    "login": "Autentificare",
+    "logout": "Deconectare",
+    "cart": "Coș",
+    "search": "Caută...",
+    "hi": "Salut"
+  },
+  "common": {
+    "addToCart": "Adaugă în Coș",
+    "allRightsReserved": "Toate drepturile rezervate.",
+    "loading": "Se încarcă...",
+    "submit": "Trimite",
+    "sendMagicLink": "Trimite Link Magic",
+    "checkYourEmail": "Verifică email-ul pentru link-ul de autentificare!",
+    "processing": "Se procesează...",
+    "signInTo": "Autentifică-te la {siteName}",
+    "tagline": "Miere Artizanală, Pur Naturală",
+    "metaDescription": "Descoperă cea mai fină miere artizanală de la m'mmiere. Pură, naturală și delicioasă."
+  },
+  "home": {
+    "welcomeTitle": "Simplu. Cinstit. Auriu.",
+    "welcomeSubtitle": "Experimentează gustul autentic al dulceaței naturii.",
+    "shopNowButton": "Cumpără Mierea Noastră",
+    "featuredProducts": "Produse Recomandate",
+    "featuredProductsSubtitle": "Selectate manual pentru tine. O degustare a celor mai populare și unice sortimente de miere."
+  },
+  "productDetail": {
+    "notFound": "Produsul nu a fost găsit",
+    "backToProducts": "← Înapoi la toate produsele",
+    "lowStock": "Doar {count} rămase în stoc!",
+    "outOfStock": "Stoc epuizat"
+  },
+  "search": {
+    "title": "Rezultatele căutării pentru '{query}'",
+    "resultsFor": "Rezultatele căutării pentru '{query}'",
+    "noResults": "Niciun rezultat găsit pentru '{query}'",
+    "prompt": "Vă rugăm introduceți un termen de căutare pentru a începe."
+  },
+  "cart": {
+    "title": "Coșul tău de Cumpărături",
+    "empty": "Coșul tău este gol momentan.",
+    "continueShopping": "Continuă Cumpărăturile",
+    "summary": "Sumar Comandă",
+    "subtotal": "Subtotal",
+    "shipping": "Livrare",
+    "shippingCalculated": "Calculată la finalizare",
+    "total": "Total",
+    "proceedToCheckout": "Continuă spre Finalizare",
+    "removeItem": "Șterge produsul",
+    "increaseQuantity": "Mărește cantitatea",
+    "decreaseQuantity": "Micșorează cantitatea"
+  },
+  "checkout": {
+    "title": "Finalizare Comandă",
+    "shippingAddress": "Adresă de Livrare",
+    "email": "Adresă de Email",
+    "fullName": "Nume Complet",
+    "addressLine1": "Adresa Linia 1",
+    "addressLine2": "Adresa Linia 2",
+    "city": "Oraș",
+    "postalCode": "Cod Poștal",
+    "country": "Țară",
+    "phoneNumber": "Număr de Telefon",
+    "paymentDetails": "Detalii Plată",
+    "paymentGatewayPlaceholder": "Integrarea gateway-ului de plată va apărea aici.",
+    "placeOrderButton": "Plasează Comanda",
+    "paymentMethod": "Metodă de Plată",
+    "payWithCard": "Plată cu Cardul",
+    "cashOnDelivery": "Plată la Livrare (Ramburs)",
+    "loginRequired": "Vă rugăm să vă autentificați pentru a continua cu finalizarea comenzii.",
+    "emptyCartRedirect": "Coșul este gol. Veți fi redirecționat pentru a continua cumpărăturile...",
+    "guestPrompt": "Ai deja un cont?",
+    "orContinueAsGuest": "sau furnizează email-ul pentru a continua ca oaspete.",
+    "orderPlacedSuccessfully": "Comanda ta a fost plasată cu succes!",
+    "stripeInfoPlaceholder": "Plată securizată prin Stripe. Detaliile cardului tău nu sunt stocate pe serverele noastre.",
+    "success": {
+      "title": "Comandă Plasată cu Succes",
+      "header": "Vă Mulțumim Pentru Comandă!",
+      "message": "Am primit comanda dvs. și vom începe procesarea ei imediat. Un email de confirmare vă va fi trimis în curând.",
+      "summaryTitle": "Sumar Comandă",
+      "orderId": "ID Comandă",
+      "orderDate": "Data",
+      "orderTotal": "Total",
+      "orderStatus": "Status",
+      "shippingTo": "Se livrează la",
+      "itemsOrdered": "Produse Comandate",
+      "quantity": "Cantitate",
+      "errorTitle": "Eroare la Încărcarea Comenzii",
+      "errorMessage": "Nu am putut prelua detaliile comenzii. Vă rugăm contactați suportul cu ID-ul comenzii, dacă îl aveți. Eroare: {error}",
+      "noOrderFound": "Comanda solicitată nu a putut fi găsită."
+    }
+  },
+  "ourStory": {
+    "title": "Povestea Noastră",
+    "metaDescription": "Aflați despre istoria și pasiunea din spatele mierii m'mmiere.",
+    "header": "De la Stupii Noștri la Casa Ta",
+    "subHeader": "Călătoria dulce a m'mmiere.",
+    "paragraph1": "Totul a început cu un singur stup și o fascinație profundă pentru lumea complexă a albinelor. Ceea ce a început ca un simplu hobby s-a transformat rapid într-o pasiune deplină pentru apicultură, agricultură durabilă și arta de a produce cea mai pură și delicioasă miere imaginabilă.",
+    "paragraph2": "Amplasată pe dealurile și pajiștile cu flori sălbatice din peisajul rural românesc, stupina noastră este un sanctuar pentru albinele noastre. Credem că albinele fericite fac cea mai bună miere, motiv pentru care prioritizăm sănătatea și bunăstarea lor mai presus de orice. Practicile noastre sunt blânde, respectuoase și întotdeauna în armonie cu ciclurile naturale ale anotimpurilor.",
+    "imageCaption": "Un apicultor m'mmiere inspectează cu grijă o ramă, asigurând sănătatea coloniei.",
+    "paragraph3": "Fiecare borcan de miere m'mmiere este o mărturie a acestei filozofii. Este o imagine a unui timp și loc specific – nectarul unui milion de flori, căldura soarelui de vară și munca neobosită a albinelor noastre incredibile. Nu amestecăm, pasteurizăm sau filtrăm fin mierea noastră, asigurându-ne că toate enzimele sale naturale, polenul și aromele delicate sunt păstrate.",
+    "paragraph4": "Suntem mai mult decât simpli apicultori; suntem păstrătorii unei tradiții. Vă invităm să gustați diferența pe care o fac pasiunea și puritatea. Vă mulțumim că faceți parte din povestea noastră."
+  },
+  "journal": {
+    "title": "Jurnal",
+    "metaDescription": "Noutăți, povești și perspective din lumea mierii m'mmiere.",
+    "header": "Din Stup",
+    "subHeader": "Ultimele noastre gânduri, povești și actualizări din lumea albinelor.",
+    "authorRole": "Apicultor"
+  },
+  "contact": {
+    "title": "Contactează-ne",
+    "metaDescription": "Intră în legătură cu echipa m'mmiere. Suntem aici pentru a răspunde întrebărilor tale despre mierea noastră artizanală.",
+    "header": "Contactează-ne",
+    "subHeader": "Ai o întrebare sau un comentariu? Ne-ar plăcea să auzim de la tine.",
+    "infoTitle": "Intră în legătură",
+    "infoAddress": "Adresă",
+    "infoPhone": "Telefon",
+    "infoEmail": "Email",
+    "emailValue": "contact@mmiere.ro",
+    "phoneValue": "+40 123 456 789",
+    "addressValue": {
+      "line1": "Strada Mierii, Nr. 1",
+      "line2": "București, România"
+    },
+    "form": {
+      "name": "Nume Complet",
+      "email": "Email",
+      "message": "Mesaj",
+      "submit": "Trimite Mesajul",
+      "submitting": "Se trimite...",
+      "success": "Mulțumim pentru mesaj! Îți vom răspunde în cel mai scurt timp.",
+      "error": {
+        "allFields": "Te rugăm să completezi toate câmpurile.",
+        "generic": "A apărut o eroare. Te rugăm să încerci din nou."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Miere pură, crudă, din inima României.",
+    "shop": "Magazin",
+    "company": "Companie",
+    "legal": "Legal",
+    "privacy": "Politică de Confidențialitate",
+    "terms": "Termeni și Condiții"
+  },
+  "legal": {
+    "lastUpdated": "Ultima actualizare: {date}",
+    "privacy": {
+      "title": "Politică de Confidențialitate"
+    },
+    "terms": {
+      "title": "Termeni și Condiții"
+    }
+  },
+  "seo": {
+    "title": "Miere Pură și Crudă",
+    "description": "Descoperiți gustul mierii pure, crude și neprocesate, recoltată cu grijă din pădurile și pajiștile neatinse ale României. Cumpărați colecția noastră de miere artizanală."
+  },
+  "ourHoney": {
+    "metaDescription": "Explorați colecția noastră de miere pură, crudă și artizanală. Fiecare borcan este o mărturie a angajamentului nostru pentru calitate și apicultură naturală.",
+    "philosophy": "Credem în mierea în forma sa cea mai pură. Albinele noastre culeg nectar din peisaje sălbatice, neatinse, iar noi recoltăm cu intervenție minimă pentru a păstra gustul natural și beneficiile pentru sănătate. Aceasta este mierea așa cum a intenționat-o natura."
+  },
+  "products": {
+    "loadError": "Produsele nu au putut fi încărcate momentan. Vă rugăm să încercați mai târziu.",
+    "noProducts": "Niciun produs găsit."
+  },
+  "common": {
+    "addToCart": "Adaugă în Coș",
+    "allRightsReserved": "Toate drepturile rezervate.",
+    "loading": "Se încarcă...",
+    "submit": "Trimite",
+    "sendMagicLink": "Trimite Link Magic",
+    "checkYourEmail": "Verifică email-ul pentru link-ul de autentificare!",
+    "processing": "Se procesează...",
+    "signInTo": "Autentifică-te la {siteName}",
+    "tagline": "Miere Artizanală, Pur Naturală",
+    "metaDescription": "Descoperă cea mai fină miere artizanală de la m'mmiere. Pură, naturală și delicioasă.",
+    "optional": "opțional"
+  }
+}

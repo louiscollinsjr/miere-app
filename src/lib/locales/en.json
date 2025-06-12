@@ -1,0 +1,179 @@
+{
+  "nav": {
+    "ourHoney": "Our Honey",
+    "ourStory": "Our Story",
+    "journal": "Journal",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "cart": "Cart",
+    "search": "Search...",
+    "hi": "Hi"
+  },
+  "common": {
+    "addToCart": "Add to Cart",
+    "allRightsReserved": "All rights reserved.",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "sendMagicLink": "Send Magic Link",
+    "checkYourEmail": "Check your email for the login link!",
+    "processing": "Processing...",
+    "signInTo": "Sign in to {siteName}",
+    "tagline": "Artisanal Honey, Naturally Pure",
+    "metaDescription": "Discover the finest artisanal honey from m'mmiere. Pure, natural, and delicious."
+  },
+  "home": {
+    "welcomeTitle": "Simple. Honest. Golden.",
+    "welcomeSubtitle": "Experience the authentic taste of nature's sweetness.",
+    "shopNowButton": "Shop Our Honey",
+    "featuredProducts": "Featured Products",
+    "featuredProductsSubtitle": "Hand-selected for you. A taste of our most popular and unique honey varieties."
+  },
+  "productDetail": {
+    "notFound": "Product not found",
+    "backToProducts": "← Back to all products",
+    "lowStock": "Only {count} left in stock!",
+    "outOfStock": "Out of stock"
+  },
+  "search": {
+    "title": "Search results for '{query}'",
+    "resultsFor": "Search results for '{query}'",
+    "noResults": "No results found for '{query}'",
+    "prompt": "Please enter a search term to begin."
+  },
+  "cart": {
+    "title": "Your Shopping Cart",
+    "empty": "Your cart is currently empty.",
+    "continueShopping": "Continue Shopping",
+    "summary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingCalculated": "Calculated at checkout",
+    "total": "Total",
+    "proceedToCheckout": "Proceed to Checkout",
+    "removeItem": "Remove item",
+    "increaseQuantity": "Increase quantity",
+    "decreaseQuantity": "Decrease quantity"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shippingAddress": "Shipping Address",
+    "email": "Email Address",
+    "fullName": "Full Name",
+    "addressLine1": "Address Line 1",
+    "addressLine2": "Address Line 2",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "country": "Country",
+    "phoneNumber": "Phone Number",
+    "paymentDetails": "Payment Details",
+    "paymentGatewayPlaceholder": "Payment gateway integration will appear here.",
+    "placeOrderButton": "Place Order",
+    "paymentMethod": "Payment Method",
+    "payWithCard": "Pay with Card",
+    "cashOnDelivery": "Cash on Delivery",
+    "loginRequired": "Please log in to continue with checkout.",
+    "emptyCartRedirect": "Your cart is empty. Redirecting you to continue shopping...",
+    "guestPrompt": "Already have an account?",
+    "orContinueAsGuest": "or provide your email to continue as guest.",
+    "orderPlacedSuccessfully": "Your order has been placed successfully!",
+    "stripeInfoPlaceholder": "Secure payment powered by Stripe. Your card details are never stored on our servers.",
+    "success": {
+      "title": "Order Successful",
+      "header": "Thank You For Your Order!",
+      "message": "We've received your order and will start processing it right away. A confirmation email will be sent to you shortly.",
+      "summaryTitle": "Order Summary",
+      "orderId": "Order ID",
+      "orderDate": "Date",
+      "orderTotal": "Total",
+      "orderStatus": "Status",
+      "shippingTo": "Shipping To",
+      "itemsOrdered": "Items Ordered",
+      "quantity": "Quantity",
+      "errorTitle": "Error Loading Order",
+      "errorMessage": "We couldn't retrieve your order details. Please contact support with your order ID if you have it. Error: {error}",
+      "noOrderFound": "The requested order could not be found."
+    }
+  },
+  "ourStory": {
+    "title": "Our Story",
+    "metaDescription": "Learn about the history and passion behind m'mmiere honey.",
+    "header": "From Our Hives to Your Home",
+    "subHeader": "The sweet journey of m'mmiere.",
+    "paragraph1": "It all started with a single beehive and a deep fascination for the intricate world of bees. What began as a simple hobby quickly blossomed into a full-fledged passion for beekeeping, sustainable agriculture, and the art of producing the purest, most delicious honey imaginable.",
+    "paragraph2": "Nestled in the rolling hills and wildflower meadows of the Romanian countryside, our apiary is a sanctuary for our bees. We believe that happy bees make the best honey, which is why we prioritize their health and well-being above all else. Our practices are gentle, respectful, and always in harmony with the natural cycles of the seasons.",
+    "imageCaption": "A m'mmiere beekeeper carefully inspecting a frame, ensuring the health of the colony.",
+    "paragraph3": "Each jar of m'mmiere honey is a testament to this philosophy. It's a snapshot of a specific time and place – the nectar of a million flowers, the warmth of the summer sun, and the tireless work of our incredible bees. We don't blend, pasteurize, or fine-filter our honey, ensuring that all of its natural enzymes, pollen, and delicate flavors are preserved.",
+    "paragraph4": "We are more than just beekeepers; we are custodians of a tradition. We invite you to taste the difference that passion and purity make. Thank you for being a part of our story."
+  },
+  "journal": {
+    "title": "Journal",
+    "metaDescription": "News, stories, and insights from the world of m'mmiere honey.",
+    "header": "From the Hive",
+    "subHeader": "Our latest thoughts, stories, and updates from the world of bees.",
+    "authorRole": "Beekeeper"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "metaDescription": "Get in touch with the m'mmiere team. We're here to answer your questions about our artisanal honey.",
+    "header": "Contact Us",
+    "subHeader": "Have a question or a comment? We'd love to hear from you.",
+    "infoTitle": "Get in touch",
+    "infoAddress": "Address",
+    "infoPhone": "Phone",
+    "infoEmail": "Email",
+    "emailValue": "contact@mmiere.ro",
+    "phoneValue": "+40 123 456 789",
+    "addressValue": {
+      "line1": "Strada Mierii, Nr. 1",
+      "line2": "Bucharest, Romania"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "success": "Thank you for your message! We'll get back to you shortly.",
+      "error": {
+        "allFields": "Please fill out all fields.",
+        "generic": "An error occurred. Please try again."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Pure, raw honey from the heart of Romania.",
+    "shop": "Shop",
+    "company": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "legal": {
+    "lastUpdated": "Last updated: {date}",
+    "privacy": {
+      "title": "Privacy Policy"
+    },
+    "terms": {
+      "title": "Terms of Service"
+    }
+  },
+  "seo": {
+    "title": "Pure, Raw Honey",
+    "description": "Discover the taste of pure, raw, and unprocessed honey, harvested with care from the pristine forests and meadows of Romania. Shop our collection of artisanal honey."
+  },
+  "ourHoney": {
+    "metaDescription": "Explore our collection of pure, raw, and artisanal honey. Each jar is a testament to our commitment to quality and natural beekeeping.",
+    "philosophy": "We believe in honey in its purest form. Our bees forage in wild, untouched landscapes, and we harvest with minimal intervention to preserve the natural taste and health benefits. This is honey as nature intended."
+  },
+  "products": {
+    "loadError": "Could not load products at this time. Please try again later.",
+    "noProducts": "No products found."
+  },
+  "common": {
+    "addToCart": "Add to Cart",
+    "allRightsReserved": "All rights reserved.",
+    "loading": "Loading...",
+    "submit": "Submit"
+  }
+}
