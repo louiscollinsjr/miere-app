@@ -21,7 +21,7 @@
             {$t('home.welcomeSubtitle')}
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
+            <div class="rounded-full shadow">
               <a href="/our-honey" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-full text-white bg-black hover:bg-gray-800 md:py-2 md:text-sm md:px-6 font-inter">
                 {$t('home.shopNowButton')}
               </a>
@@ -41,8 +41,8 @@
 <div class="bg-white">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">{$t('home.featuredProducts')}</h2>
-      <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">{$t('home.featuredProductsSubtitle')}</p>
+      <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-2xl">{$t('home.featuredProducts')}</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-base text-gray-7 font-bold">{$t('home.featuredProductsSubtitle')}</p>
     </div>
     <ProductList limit={4} />
   </div>

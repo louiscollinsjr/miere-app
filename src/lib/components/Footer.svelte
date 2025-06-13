@@ -22,7 +22,7 @@
   ];
 </script>
 
-<footer class="bg-[#f5f5f7] font-inter">
+<footer class="bg-[#ffffff] font-inter">
   <div class="container max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
     <!-- Logo and tagline -->
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8">

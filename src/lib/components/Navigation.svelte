@@ -85,12 +85,12 @@
     <div class="flex items-center justify-between">
       <a href="/" class="text-2xl sm:text-5xl font-bold text-black tracking-tight font-dancing">m'mmiere</a>
       
-      <div class="hidden md:flex items-center space-x-8">
+      <div class="hidden md:flex items-center space-x-8 mt-4 text-[12px]">
         {#each navItemKeys as item}
           {#if !item.requiresAuth || (item.requiresAuth && $userStore.user)}
             <a 
               href={item.href} 
-              class="text-sm font-semibold text-gray-800 hover:text-black transition-colors"
+              class="font-semibold text-gray-800 hover:text-black transition-colors"
             >
               {$t(item.key)}  
             </a>
@@ -98,23 +98,23 @@
         {/each}
       </div>
 
-      <div class="hidden md:flex items-center space-x-6">
+      <div class="hidden md:flex items-center space-x-6 mt-4 text-[12px]">
 
         {#if $userStore.user}
-          <span class="text-sm font-semibold text-gray-800">{$t('nav.hi')}, {userDisplayName}</span>
+          <span class="font-semibold text-gray-800">{$t('nav.hi')}, {userDisplayName}</span>
           <button 
             on:click={handleLogout} 
-            class="text-sm font-semibold text-gray-800 hover:text-black transition-colors"
+            class="font-semibold text-gray-800 hover:text-black transition-colors"
           >
             {$t('nav.logout')}
           </button>
         {:else}
-          <a href="/login" class="text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+          <a href="/login" class="font-semibold text-gray-800 hover:text-black transition-colors">
             {$t('nav.login')}
           </a>
         {/if}
         
-        <a href="/cart" class="text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+        <a href="/cart" class="font-semibold text-gray-800 hover:text-black transition-colors">
           {$t('nav.cart')} {#if $cart.length > 0}({$cart.length}){/if}
         </a>
         
@@ -123,7 +123,7 @@
             bind:value={searchQuery}
             type="text"
             placeholder={$t('nav.search')}
-            class="border border-gray-300 rounded-md py-1 pl-3 pr-8 text-sm focus:outline-none focus:ring-1 focus:ring-black w-32 hover:w-48 focus:w-48 transition-all duration-300"
+            class="border border-gray-300 rounded-md py-1 pl-3 pr-8 text-sm font-bold focus:outline-none focus:ring-1 focus:ring-black w-32 hover:w-48 focus:w-48 transition-all duration-300"
           />
           <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-black">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -133,21 +133,21 @@
         </form>
       </div>
       
-      <div class="md:hidden flex items-center space-x-4">
+      <div class="md:hidden flex items-center space-x-4 text-[12px]">
         {#if $userStore.user}
           <button 
             on:click={handleLogout} 
-            class="text-sm font-semibold text-gray-800 hover:text-black transition-colors"
+            class="font-semibold text-gray-800 hover:text-black transition-colors"
           >
             {$t('nav.logout')}
           </button>
         {:else}
-          <a href="/login" class="text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+          <a href="/login" class="font-semibold text-gray-800 hover:text-black transition-colors">
             {$t('nav.login')}
           </a>
         {/if}
         
-        <a href="/cart" class="text-sm font-semibold text-gray-800 hover:text-black transition-colors">
+        <a href="/cart" class=" font-semibold text-gray-800 hover:text-black transition-colors">
           {$t('nav.cart')} {#if $cart.length > 0}({$cart.length}){/if}
         </a>
         

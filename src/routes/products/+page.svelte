@@ -50,7 +50,7 @@
   <h1 class="text-3xl font-bold mb-8 text-center">{$t('nav.ourHoney')}</h1>
 
   {#if loading}
-    <p class="text-center text-gray-600">{$t('common.loading')}</p>
+    <p class="text-center text-xs font-inter font-bold text-gray-600">{$t('common.loading')}</p>
   {:else if error}
     <p class="text-center text-red-600">{error}</p>
   {:else if products.length === 0}
@@ -63,3 +63,4 @@
     </div>
   {/if}
 </div>
+``

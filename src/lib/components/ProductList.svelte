@@ -23,7 +23,7 @@ function getProductDescription(product) {
     let query = supabase
       .from('mmm_products')
       .select('*')
-      .order('name', { ascending: true });
+      .order('name_en', { ascending: true });
 
     if (limit) {
       query = query.limit(limit);

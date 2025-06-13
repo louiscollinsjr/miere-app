@@ -12,6 +12,5 @@ export const createClient = (event, serverSession) =>
 
 // Helper function for getting product image URLs
 export function getProductImageUrl(bucket: string, path: string) {
-  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
-  return data.publicUrl;
+  return `${PUBLIC_SUPABASE_URL}/storage/v1/object/public/${bucket}/${path}`;
 }

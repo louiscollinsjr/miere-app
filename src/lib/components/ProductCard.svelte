@@ -17,7 +17,7 @@
 
   // Placeholder image if no image_path is provided
   const placeholderImage = 'https://via.placeholder.com/400x300.png?text=Miere+Delicioasa';
-  $: imageUrl = product.image_path ? getProductImageUrl('product-images', product.image_path) : placeholderImage;
+  $: imageUrl = product.image_path ? getProductImageUrl('mmm_product_images', product.image_path) : placeholderImage;
 
   function handleAddToCart() {
     addToCart({
@@ -29,34 +29,35 @@
   }
 </script>
 
-<div class="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden flex flex-col h-full">
-  <a href={`/products/${product.id}`} class="block group">
-    <div class="aspect-w-4 aspect-h-3 bg-gray-100 overflow-hidden">
+<div class="bg-white rounded-lg  overflow-hidden flex flex-col h-full">
+  <a href={`/products/${product.id}`} class="block group text-center">
+    <div class="aspect-w-4 aspect-h-3 bg-gray-100 overflow-hidden ">
       <img 
         src={imageUrl} 
-        alt={product.name} 
+        alt={product.name_en} 
         class="w-full h-full object-cover group-hover:opacity-80 transition-opacity duration-200"
       />
     </div>
     <div class="p-4 flex-grow">
-      <h3 class="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors truncate">
-        {product.name}
+      <h3 class="text-2xl font-semibold text-gray-900 group-hover:text-black transition-colors truncate">
+        {product.name_en} 
       </h3>
-      {#if product.description}
+      {#if product.description_en}
         <p class="text-sm text-gray-600 mt-1 line-clamp-2">
-          {product.description}
+          {product.description_en} 
         </p>
+        <span class="text-gray-600 text-xs">450g</span>
       {/if}
     </div>
   </a>
-  <div class="p-4 border-t border-gray-200 mt-auto">
+  <div class="p-4 mt-auto">
     <div class="flex items-center justify-between">
-      <p class="text-xl font-bold text-gray-900">
+      <p class="text-lg font-bold text-gray-900">
         {product.price.toFixed(2)} RON
       </p>
       <button 
         on:click={handleAddToCart}
-        class="px-4 py-2 bg-black text-white text-sm font-medium rounded-md hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+        class="px-3 py-2 bg-black text-white font-inter text-xs font-bold rounded-full hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
       >
         {$t('common.addToCart')}
       </button>
