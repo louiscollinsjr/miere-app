@@ -64,7 +64,7 @@
       } else {
         product = data;
         if (product && product.image_path) {
-          imageUrl = getProductImageUrl('product-images', product.image_path);
+          imageUrl = getProductImageUrl('mmm_product_images', product.image_path);
         } else {
           imageUrl = placeholderImage;
         }
@@ -77,13 +77,23 @@
     }
   });
 
+  let count = 1;
+
+  function increment() {
+    count = count + 1;
+  }
+  function decrement() {
+    if (count > 1) count = count - 1;
+  }
+
   function handleAddToCart() {
     if (product) {
       addToCart({
         id: product.id,
-        name: product.name,
+        name: product.name_en,
         price: product.price,
         imageUrl: product.image_path || undefined,
+        count
       });
     }
   }
@@ -110,74 +120,55 @@
   <div class="container mx-auto py-8 px-4">
     <div class="md:flex md:space-x-8">
       <div class="md:w-1/2 mb-6 md:mb-0">
-        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden shadow-none">
           <img 
             src={imageUrl || placeholderImage} 
-            alt={product.name} 
+            alt={product.name_en} 
             class="w-full h-full object-cover"
             on:error={() => { imageUrl = placeholderImage; /* Fallback if Supabase image fails to load */ }}
           />
         </div>
       </div>
+
       <div class="md:w-1/2">
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">{product.name}</h1>
-        <p class="text-2xl font-semibold text-gray-800 mb-6">{product.price.toFixed(2)} RON</p>
+        <p class="text-lg text-black font-bold font-dancing">m'mmiere</p>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">{product.name_en}</h1>
+        <p class="text-sm font-semibold text-gray-800 mb-6">{product.price.toFixed(2)} RON</p> <!-- TODO: Convert to EUR € $ -->
         
-        {#if product.description}
-          <div class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none mb-6">
-            {@html product.description}
-          </div>
-        {/if}
-
-        <button 
-          on:click={handleAddToCart}
-          class="w-full md:w-auto px-8 py-3 bg-black text-white text-base font-medium rounded-md hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-        >
-          {$t('common.addToCart')}
-        </button>
-      </div>
-    </div>
-    <!-- Suggested products or more details can go here -->
-  </div>
-
-  <div class="container mx-auto py-8 px-4">
-    <div class="md:flex md:space-x-8">
-      <div class="md:w-1/2 mb-6 md:mb-0">
-        <div class="aspect-w-1 aspect-h-1 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+        <div class="flex flex-col items-left justify-center">
           <img 
-            src={imageUrl || placeholderImage} 
-            alt={product.name} 
-            class="w-full h-full object-cover"
-            on:error={() => { imageUrl = placeholderImage; /* Fallback if Supabase image fails to load */ }}
+            src="/acacia.png" 
+            alt="Acacia" 
+            class="w-12 h-12 object-cover"
           />
+          <h1 class="text-xs font-bold my-3 mb-6">{product.name_en}</h1>
         </div>
-      </div>
-      <div class="md:w-1/2">
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">{product.name}</h1>
-        <p class="text-2xl font-semibold text-gray-800 mb-6">{product.price.toFixed(2)} RON</p>
-        
-        {#if product.description}
-          <div class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl max-w-none mb-6">
-            {@html product.description} <!-- Assuming description might contain basic HTML like paragraphs -->
+
+        {#if product.description_en}
+          <div class="prose font-bold prose-sm sm:prose lg:prose-sm xl:prose-sm max-w-none mb-6">
+            {@html product.description_en}
+            <p class="text-xs font-bold pt-16 w-[60%]">Application:</p>
+            <p class="text-xs font-bold pt-2 w-[60%] leading-5">A gentle, light honey known for its soothing properties.
+              Helps relieve fatigue and promotes restful sleep.
+              Supports emotional balance and may assist in reducing mild anxiety.
+              Contributes to stabilizing blood pressure and improving digestion.
+              Its antimicrobial nature can aid in healing minor skin irritations and gastric discomfort, such as ulcers.</p>
           </div>
         {/if}
 
-        <button 
-          on:click={handleAddToCart}
-          class="w-full md:w-auto px-8 py-3 bg-black text-white text-base font-medium rounded-md hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
-        >
-          {$t('common.addToCart')}
-        </button>
-
-        <!-- Placeholder for stock information if needed later -->
-        <!-- {#if product.stock_quantity < 10 && product.stock_quantity > 0}
-          <p class="text-sm text-yellow-600 mt-2">{$t('productDetail.lowStock', { count: product.stock_quantity })}</p>
-        {:else if product.stock_quantity <= 0}
-          <p class="text-sm text-red-600 mt-2">{$t('productDetail.outOfStock')}</p>
-        {/if} -->
+        <div class="flex items-center space-x-4 mb-4">
+  <button on:click={decrement} class="w-8 h-8 rounded-full border border-gray-300 text-xl flex items-center justify-center text-gray-400 hover:text-black hover:border-black focus:outline-none">-</button>
+  <span class="w-10 h-8 flex items-center justify-center rounded-full border border-gray-300 text-sm font-bold font-inter bg-white">{count}</span>
+  <button on:click={increment} class="w-8 h-8 rounded-full border border-gray-300 text-xl flex items-center justify-center text-gray-400 hover:text-black hover:border-black focus:outline-none">+</button>
+  <button 
+    on:click={handleAddToCart}
+    class="w-40 px-4 py-3 bg-black text-white text-xs font-bold rounded-full hover:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black uppercase tracking-widest"
+  >
+    {$t('common.addToCart')}
+  </button>
+</div>
       </div>
     </div>
-
     <!-- Suggested products or more details can go here -->
   </div>
 {/if}
