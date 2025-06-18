@@ -1,0 +1,75 @@
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { createClient } from '@supabase/supabase-js';
+  import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+  import { t } from 'svelte-i18n';
+  import PositiveEffects from './PositiveEffects.svelte';
+  import { getProductImageUrl } from '$lib/supabase';
+  import type { Product } from '../../app.d';
+
+  const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+  let products: Product[] = [];
+  let loading = true;
+  let error: string | null = null;
+
+  onMount(async () => {
+    const { data, error: fetchError } = await supabase
+      .from('mmm_products')
+      .select(`
+        *,
+        health_effects:mmm_product_effects(effect:mmm_health_effects(*))
+      `)
+      .order('name_en', { ascending: true });
+    
+    if (fetchError) {
+      error = $t('products.loadError');
+    } else {
+      // Transform the nested health effects data structure
+      products = data.map(product => ({
+        ...product,
+        health_effects: product.health_effects
+          ? product.health_effects
+              .map(pe => pe.effect)
+              .filter(effect => effect !== null)
+          : []
+      }));
+    }
+    loading = false;
+  });
+
+  function getIconUrl(product: Product) {
+    return product.icon_path
+      ? getProductImageUrl('mmm_product_images', product.icon_path)
+      : '/health_icons/drop.png';
+  }
+</script>
+
+{#if loading}
+  <p class="text-center">{$t('common.loading')}...</p>
+{:else if error}
+  <p class="text-center text-red-600">{error}</p>
+{:else}
+  <div class="space-y-16">
+    {#each products as product (product.id)}
+      <div class="flex flex-col items-center md:items-start gap-2 py-12 border-b border-gray-100 w-full">
+        <img src={getIconUrl(product)} alt={product.name_en} class="w-12 h-12 object-cover rounded-lg mb-2" loading="lazy" />
+        <p class="text-base font-bold font-quicksand text-center mt-2">{product.icon_title}</p>
+        <!-- <h2 class="text-2xl font-bold mb-2 font-quicksand text-center md:text-left">{product.name_en}</h2> -->
+        {#if product.description_en}
+          <div class="text-sm text-gray-800 mb-2 text-center md:text-left font-quicksand font-bold">{@html product.description_en}</div>
+        {/if}
+        {#if product.application_description_en}
+          <div class="mb-2 w-full font-quicksand font-bold">
+            <span class="block text-sm font-bold text-gray-900 mt-2 mb-2">Application:</span>
+            <span class="block text-sm font-bold text-gray-900">{product.application_description_en}</span>
+          </div>
+        {/if}
+        {#if product.health_effects && product.health_effects.length > 0}
+          <div class="w-full my-6">
+            <PositiveEffects effects={product.health_effects} heading="Positive Effects" />
+          </div>
+        {/if}
+      </div>
+    {/each}
+  </div>
+{/if}

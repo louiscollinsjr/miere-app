@@ -12,7 +12,7 @@ const initialLocale = getLocaleFromNavigator() || 'en';
 
 // Initialize svelte-i18n
 init({
-  fallbackLocale: 'en',
+  fallbackLocale: 'ro',
   initialLocale: initialLocale,
 });
 

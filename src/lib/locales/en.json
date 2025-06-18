@@ -164,7 +164,9 @@
   },
   "ourHoney": {
     "metaDescription": "Explore our collection of pure, raw, and artisanal honey. Each jar is a testament to our commitment to quality and natural beekeeping.",
-    "philosophy": "We believe in honey in its purest form. Our bees forage in wild, untouched landscapes, and we harvest with minimal intervention to preserve the natural taste and health benefits. This is honey as nature intended."
+    "philosophy": "We believe in honey in its purest form. Our bees forage in wild, untouched landscapes, and we harvest with minimal intervention to preserve the natural taste and health benefits. This is honey as nature intended.",
+    "origin": "Our honey is harvested from the pristine forests and meadows of Romania, where our bees forage on a diverse range of wildflowers and plants.",
+    "character": "Each jar of our honey is unique, with its own distinct flavor profile and aroma. From the delicate notes of acacia to the rich, caramel tones of our forest honey, every variety is a reflection of the natural world that surrounds us."
   },
   "products": {
     "loadError": "Could not load products at this time. Please try again later.",

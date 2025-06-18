@@ -164,7 +164,9 @@
   },
   "ourHoney": {
     "metaDescription": "Explorați colecția noastră de miere pură, crudă și artizanală. Fiecare borcan este o mărturie a angajamentului nostru pentru calitate și apicultură naturală.",
-    "philosophy": "Credem în mierea în forma sa cea mai pură. Albinele noastre culeg nectar din peisaje sălbatice, neatinse, iar noi recoltăm cu intervenție minimă pentru a păstra gustul natural și beneficiile pentru sănătate. Aceasta este mierea așa cum a intenționat-o natura."
+    "philosophy": "Credem în mierea în forma sa cea mai pură. Albinele noastre culeg nectar din peisaje sălbatice, neatinse, iar noi recoltăm cu intervenție minimă pentru a păstra gustul natural și beneficiile pentru sănătate. Aceasta este mierea așa cum a intenționat-o natura.",
+    "origin": "Originea noastră este în inima României, unde natura ne oferă condiții ideale pentru creșterea albinelor și producerea mierii pure.",
+    "character": "Mierea noastră are un caracter unic, reflectând diversitatea florilor și a peisajelor din care este produsă. Fiecare borcan este o poveste a locului și a timpului în care a fost creat."
   },
   "products": {
     "loadError": "Produsele nu au putut fi încărcate momentan. Vă rugăm să încercați mai târziu.",

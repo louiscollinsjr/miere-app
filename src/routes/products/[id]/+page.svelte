@@ -168,7 +168,7 @@
       <img
         src={iconUrl || placeholderImage}
         alt={product.name_en}
-        class="w-16 h-16 object-cover rounded-lg"
+        class="w-12 h-12 object-cover rounded-lg"
         on:error={() => { iconUrl = placeholderImage; /* Fallback if Supabase image fails to load */ }}
       />
       <p class="text-base font-bold font-quicksand mt-4">{iconTitle}</p>
