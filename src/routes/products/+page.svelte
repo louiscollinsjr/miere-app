@@ -6,18 +6,7 @@
   import { onMount } from 'svelte';
   import { t } from 'svelte-i18n';
 
-  type Product = {
-    id: string;
-    created_at: string;
-    name_en: string;
-    name_ro: string;
-    description_en?: string | null;
-    description_ro?: string | null;
-    price: number;
-    stock_quantity: number;
-    image_path?: string | null;
-    is_active: boolean;
-  };
+  import type { Product } from '../../app.d';
 
   let products: Product[] = [];
   let loading = true;

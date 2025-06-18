@@ -3,17 +3,8 @@
   import { addToCart } from '$lib/stores/cart';
   import { getProductImageUrl } from '$lib/supabase'; // We'll use this later
 
-  export let product: {
-    id: string;
-    name_en: string;
-    name_ro: string;
-    description_en?: string | null;
-    description_ro?: string | null;
-    price: number;
-    image_path?: string | null;
-  };
-  export let name: string;
-  export let description: string | null = null;
+  import type { Product } from '../../app.d';
+  export let product: Product;
 
   // Placeholder image if no image_path is provided
   const placeholderImage = 'https://via.placeholder.com/400x300.png?text=Miere+Delicioasa';
@@ -22,7 +13,7 @@
   function handleAddToCart() {
     addToCart({
       id: product.id,
-      name: product.name,
+      name: product.name_en,
       price: product.price,
       imageUrl: product.image_path || undefined, // Pass actual image path if available
     });
@@ -45,7 +36,7 @@
       </h3>
       {#if product.description_en}
         <p class="text-sm text-gray-600 mt-1 line-clamp-2">
-          {product.description_en} 
+          {product.description_en}
         </p>
         <span class="text-gray-600 text-xs">450g</span>
       {/if}

@@ -2,11 +2,13 @@
   import { createClient } from '@supabase/supabase-js';
   import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
   const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+  import type { Product } from '../../../app.d.ts';
   import { onMount } from 'svelte';
   import { page } from '$app/stores';
   import { t } from 'svelte-i18n';
   import { getProductImageUrl } from '$lib/supabase';
   import { addToCart } from '$lib/stores/cart';
+  import PositiveEffects from '$lib/components/PositiveEffects.svelte';
 
   type Product = {
     id: string;
@@ -18,6 +20,8 @@
     price: number;
     stock_quantity: number;
     image_path?: string | null;
+    icon_path?: string | null;
+    icon_title?: string | null;
     is_active: boolean;
   };
 
@@ -25,18 +29,31 @@
   let loading = true;
   let error: string | null = null;
   let imageUrl: string | null = null;
+  let iconUrl: string | null = null;
+  let iconTitle: string | null = null;
   const placeholderImage = 'https://via.placeholder.com/600x400.png?text=Miere+Delicioasa';
+
+  // Set iconTitle reactively when product changes
+  $: iconTitle = product && product.icon_title ? product.icon_title : null;
+
+  // Set imageUrl and iconUrl reactively when product changes
+  $: imageUrl = product && product.image_path
+    ? getProductImageUrl('mmm_product_images', product.image_path)
+    : null;
+  $: iconUrl = product && product.icon_path
+    ? getProductImageUrl('mmm_product_images', product.icon_path)
+    : null;
 
   // Compute the page title reactively based on error/product
   $: pageTitle = error || !product
     ? `${$t('productDetail.notFound')} - m'mmiere`
     : product
-      ? `${product.name} - m'mmiere`
+      ? `${product.name_en} - m'mmiere`
       : "m'mmiere";
 
   // Compute meta description reactively
-  $: metaDescription = product && product.description
-    ? product.description.substring(0, 160)
+  $: metaDescription = product && product.description_en
+    ? product.description_en.substring(0, 160)
     : null;
 
   onMount(async () => {
@@ -50,7 +67,9 @@
     try {
       const { data, error: dbError } = await supabase
         .from('mmm_products')
-        .select('*')
+        .select(`*,
+          health_effects:mmm_product_effects(effect:mmm_health_effects(id, key, label, icon_name, description))
+        `)
         .eq('id', productId)
         .eq('is_active', true)
         .single();
@@ -62,11 +81,21 @@
       if (!data) {
         error = 'Product not found or not available.';
       } else {
-        product = data;
+        // Flatten joined health effects array
+        const healthEffects = (data.health_effects || []).map((row: any) => row.effect);
+        product = {
+          ...data,
+          health_effects: healthEffects
+        };
         if (product && product.image_path) {
           imageUrl = getProductImageUrl('mmm_product_images', product.image_path);
         } else {
           imageUrl = placeholderImage;
+        }
+        if (product && product.icon_path) {
+          iconUrl = getProductImageUrl('mmm_product_images', product.icon_path);
+        } else {
+          iconUrl = placeholderImage;
         }
       }
     } catch (err: any) {
@@ -92,8 +121,7 @@
         id: product.id,
         name: product.name_en,
         price: product.price,
-        imageUrl: product.image_path || undefined,
-        count
+        imageUrl: product.image_path || undefined
       });
     }
   }
@@ -132,29 +160,38 @@
 
       <div class="md:w-1/2">
         <p class="text-lg text-black font-bold font-dancing">m'mmiere</p>
-        <h1 class="text-3xl md:text-4xl font-bold mb-3">{product.name_en}</h1>
-        <p class="text-sm font-semibold text-gray-800 mb-6">{product.price.toFixed(2)} RON</p> <!-- TODO: Convert to EUR € $ -->
-        
-        <div class="flex flex-col items-left justify-center">
-          <img 
-            src="/acacia.png" 
-            alt="Acacia" 
-            class="w-12 h-12 object-cover"
-          />
-          <h1 class="text-xs font-bold my-3 mb-6">{product.name_en}</h1>
-        </div>
+        <h1 class="text-3xl md:text-2xl font-bold mb-3">{product.name_en}</h1>
+        <p class="text-sm font-semibold text-gray-800 mb-8">{product.price.toFixed(2)} RON</p> <!-- TODO: Convert to EUR € $ -->
+        <div class="flex flex-col items-start justify-center mb-4 pt-4">
+  {#if product.icon_path}
+    <div class="flex flex-col items-center">
+      <img
+        src={iconUrl || placeholderImage}
+        alt={product.name_en}
+        class="w-16 h-16 object-cover rounded-lg"
+        on:error={() => { iconUrl = placeholderImage; /* Fallback if Supabase image fails to load */ }}
+      />
+      <p class="text-base font-bold font-quicksand mt-4">{iconTitle}</p>
+    </div>
+  {/if}
+</div>
 
         {#if product.description_en}
-          <div class="prose font-bold prose-sm sm:prose lg:prose-sm xl:prose-sm max-w-none mb-6">
+          <div class="font-bold text-xs max-w-[50%] mb-6 mt-2 ">
             {@html product.description_en}
-            <p class="text-xs font-bold pt-16 w-[60%]">Application:</p>
-            <p class="text-xs font-bold pt-2 w-[60%] leading-5">A gentle, light honey known for its soothing properties.
-              Helps relieve fatigue and promotes restful sleep.
-              Supports emotional balance and may assist in reducing mild anxiety.
-              Contributes to stabilizing blood pressure and improving digestion.
-              Its antimicrobial nature can aid in healing minor skin irritations and gastric discomfort, such as ulcers.</p>
           </div>
         {/if}
+
+        {#if product.application_description_en}
+          <div class="prose prose-sm max-w-none mb-16 mt-6">
+            <p class="text-xs font-bold pt-4 w-[60%]">Application:</p>
+            <p class="text-xs pt-2 w-[85%] sm:w-[70%] leading-5 font-quicksand font-bold">{product.application_description_en}</p>
+          </div>
+        {/if}
+
+        <!-- {#if product.health_effects && product.health_effects.length > 0}
+          <PositiveEffects effects={product.health_effects} heading="Positive Effects" />
+        {/if} -->
 
         <div class="flex items-center space-x-4 mb-4">
   <button on:click={decrement} class="w-8 h-8 rounded-full border border-gray-300 text-xl flex items-center justify-center text-gray-400 hover:text-black hover:border-black focus:outline-none">-</button>
@@ -170,5 +207,17 @@
       </div>
     </div>
     <!-- Suggested products or more details can go here -->
+     <div class="flex justify-between border-b border-t border-gray-200 max-w-7xl mx-auto mt-24 py-24">
+     <section class="ml-8">
+      <!-- reviews -->
+       <p class="text-sm font-bold mb-4 text-quicksand ml-4">Reviews</p>
+     </section>
+     <section class="">
+      {#if product.health_effects && product.health_effects.length > 0}
+      <PositiveEffects effects={product.health_effects} heading="Positive Effects" />
+    {/if}
+     </section>
+     </div>
+   
   </div>
 {/if}

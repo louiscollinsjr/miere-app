@@ -4,19 +4,10 @@
   const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
   import ProductCard from '$lib/components/ProductCard.svelte';
   import { page } from '$app/stores';
-  import { derived } from 'svelte';
+  import { derived } from 'svelte/store';
   import { t } from 'svelte-i18n';
 
-  type Product = {
-    id: string;
-    created_at: string;
-    name: string;
-    description?: string | null;
-    price: number;
-    stock_quantity: number;
-    image_path?: string | null;
-    is_active: boolean;
-  };
+  import type { Product } from '../../app.d';
 
   let products: Product[] = [];
   let loading = true;
@@ -24,11 +15,11 @@
   let query = '';
 
   // This derived store will react to changes in the URL's search parameters
-  const searchQuery = derived(page, ($page) => $page.url.searchParams.get('q') || '');
+  const searchQuery = derived(page, ($page: any) => $page.url.searchParams.get('q') || '');
 
   // We subscribe to the derived store. Whenever the search query in the URL changes,
   // this code will re-run to fetch new search results.
-  searchQuery.subscribe(async (value) => {
+  searchQuery.subscribe(async (value: string) => {
     query = value.trim();
     if (!query) {
       products = [];
@@ -45,7 +36,7 @@
       const { data, error: dbError } = await supabase
         .from('products')
         .select('*')
-        .or(`name.ilike.%${query}%,description.ilike.%${query}%`)
+        .or(`name_en.ilike.%${query}%,description_en.ilike.%${query}%`)
         .eq('is_active', true);
 
       if (dbError) throw dbError;
@@ -83,7 +74,7 @@
   {:else if products.length > 0}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       {#each products as product (product.id)}
-        <ProductCard {product} name={product.name_en} description={product.description_en} />
+        <ProductCard {product} />
       {/each}
     </div>
   {/if}

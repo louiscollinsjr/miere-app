@@ -8,13 +8,14 @@
 
   export let limit: number | null = null;
 
-  let products: any[] = [];
+  import type { Product } from '../../app.d';
+  let products: Product[] = [];
 $: locale = $t('locale') || 'en'; // Use svelte-i18n locale
-function getProductName(product) {
-  return product[`name_${locale}`] || product.name_en || product.name;
+function getProductName(product: Product) {
+  return product.name_en;
 }
-function getProductDescription(product) {
-  return product[`description_${locale}`] || product.description_en || product.description;
+function getProductDescription(product: Product) {
+  return product.description_en;
 }
   let loading = true;
   let error: string | null = null;
@@ -50,7 +51,7 @@ function getProductDescription(product) {
 {:else}
   <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
     {#each products as product (product.id)}
-      <ProductCard {product} name={getProductName(product)} description={getProductDescription(product)} />
+      <ProductCard {product} />
     {/each}
   </div>
 {/if}
