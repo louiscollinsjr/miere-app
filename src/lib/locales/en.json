@@ -170,7 +170,8 @@
   },
   "products": {
     "loadError": "Could not load products at this time. Please try again later.",
-    "noProducts": "No products found."
+    "noProducts": "No products found.",
+    "application": "Application"
   },
   "common": {
     "addToCart": "Add to Cart",
