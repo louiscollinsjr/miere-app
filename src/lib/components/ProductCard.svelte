@@ -41,7 +41,7 @@
     </div>
     
     <div class="p-4 flex-grow">
-      <h3 class="text-2xl font-semibold text-gray-900 group-hover:text-black transition-colors truncate">
+      <h3 class="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors truncate">
         {locale === 'ro' && product.name_ro ? product.name_ro : product.name_en} 
       </h3>
       {#if (locale === 'ro' && product.description_ro) || product.description_en}

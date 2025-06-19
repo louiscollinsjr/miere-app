@@ -24,7 +24,11 @@
   onMount(async () => {
     let query = supabase
       .from('mmm_products')
-      .select('*')
+      .select(`
+        id, created_at, name_en, name_ro, description_en, description_ro, 
+        application_description_en, application_description_ro, price, stock_quantity, 
+        image_path, icon_path, icon_title_en, icon_title_ro, is_active
+      `)
       .order(locale === 'ro' ? 'name_ro' : 'name_en', { ascending: true });
 
     if (limit) {

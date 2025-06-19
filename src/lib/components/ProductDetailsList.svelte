@@ -23,7 +23,9 @@
     const { data, error: fetchError } = await supabase
       .from('mmm_products')
       .select(`
-        *,
+        id, created_at, name_en, name_ro, description_en, description_ro, 
+        application_description_en, application_description_ro, price, stock_quantity, 
+        image_path, icon_path, icon_title_en, icon_title_ro, is_active,
         health_effects:mmm_product_effects(effect:mmm_health_effects(id, icon_name, label_en, label_ro))
       `)
       .order(locale === 'ro' ? 'name_ro' : 'name_en', { ascending: true });
@@ -60,7 +62,7 @@
     {#each products as product (product.id)}
       <div class="flex flex-col items-center md:items-start gap-2 py-12 border-b border-gray-100 w-full">
         <img src={getIconUrl(product)} alt={locale === 'ro' && product.name_ro ? product.name_ro : product.name_en} class="w-12 h-12 object-cover rounded-lg mb-2" loading="lazy" />
-        <p class="text-base font-bold font-quicksand text-center mt-2">{product.icon_title}</p>
+        <p class="text-base font-bold font-quicksand text-center mt-2">{locale === 'ro' && product.icon_title_ro ? product.icon_title_ro : product.icon_title_en}</p>
         <!-- <h2 class="text-2xl font-bold mb-2 font-quicksand text-center md:text-left">{locale === 'ro' && product.name_ro ? product.name_ro : product.name_en}</h2> -->
         {#if (locale === 'ro' && product.description_ro) || product.description_en}
           <div class="text-sm text-gray-800 mb-2 text-center md:text-left font-quicksand font-bold">{@html locale === 'ro' && product.description_ro ? product.description_ro : product.description_en}</div>

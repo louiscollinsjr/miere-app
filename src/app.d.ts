@@ -40,7 +40,8 @@ export type Product = {
   stock_quantity: number;
   image_path?: string;
   icon_path?: string;
-  icon_title?: string;
+  icon_title_en?: string;
+  icon_title_ro?: string;
   is_active: boolean;
   // New: joined health effects
   health_effects?: HealthEffect[];

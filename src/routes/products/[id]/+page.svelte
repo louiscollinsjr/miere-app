@@ -28,8 +28,8 @@
     });
   });
 
-  // Set iconTitle reactively when product changes
-  $: iconTitle = product && product.icon_title ? product.icon_title : null;
+  // Set iconTitle reactively when product changes based on locale
+  $: iconTitle = product ? (locale === 'ro' && product.icon_title_ro ? product.icon_title_ro : product.icon_title_en) : null;
 
   // Set imageUrl and iconUrl reactively when product changes
   $: imageUrl = product && product.image_path
@@ -62,7 +62,10 @@
     try {
       const { data, error: dbError } = await supabase
         .from('mmm_products')
-        .select(`*,
+        .select(`
+          id, created_at, name_en, name_ro, description_en, description_ro, 
+          application_description_en, application_description_ro, price, stock_quantity, 
+          image_path, icon_path, icon_title_en, icon_title_ro, is_active,
           health_effects:mmm_product_effects(effect:mmm_health_effects(id, key, label_en, label_ro, icon_name, description))
         `)
         .eq('id', productId)
