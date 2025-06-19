@@ -3,27 +3,13 @@
   import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
   const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
   import type { Product } from '../../../app.d.ts';
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { page } from '$app/stores';
   import { t } from 'svelte-i18n';
+  import { getLocale } from '$lib/i18n';
   import { getProductImageUrl } from '$lib/supabase';
   import { addToCart } from '$lib/stores/cart';
   import PositiveEffects from '$lib/components/PositiveEffects.svelte';
-
-  type Product = {
-    id: string;
-    created_at: string;
-    name_en: string;
-    name_ro: string;
-    description_en?: string | null;
-    description_ro?: string | null;
-    price: number;
-    stock_quantity: number;
-    image_path?: string | null;
-    icon_path?: string | null;
-    icon_title?: string | null;
-    is_active: boolean;
-  };
 
   let product: Product | null = null;
   let loading = true;
@@ -31,7 +17,16 @@
   let imageUrl: string | null = null;
   let iconUrl: string | null = null;
   let iconTitle: string | null = null;
+  let locale = 'en';
+  let unsubscribe: () => void;
   const placeholderImage = 'https://via.placeholder.com/600x400.png?text=Miere+Delicioasa';
+  
+  // Subscribe to locale changes
+  onMount(() => {
+    unsubscribe = getLocale().subscribe((value) => {
+      locale = value;
+    });
+  });
 
   // Set iconTitle reactively when product changes
   $: iconTitle = product && product.icon_title ? product.icon_title : null;
@@ -68,7 +63,7 @@
       const { data, error: dbError } = await supabase
         .from('mmm_products')
         .select(`*,
-          health_effects:mmm_product_effects(effect:mmm_health_effects(id, key, label, icon_name, description))
+          health_effects:mmm_product_effects(effect:mmm_health_effects(id, key, label_en, label_ro, icon_name, description))
         `)
         .eq('id', productId)
         .eq('is_active', true)
@@ -105,6 +100,10 @@
       loading = false;
     }
   });
+  
+  onDestroy(() => {
+    if (unsubscribe) unsubscribe();
+  });
 
   let count = 1;
 
@@ -119,7 +118,7 @@
     if (product) {
       addToCart({
         id: product.id,
-        name: product.name_en,
+        name: locale === 'ro' && product.name_ro ? product.name_ro : product.name_en,
         price: product.price,
         imageUrl: product.image_path || undefined
       });
@@ -160,7 +159,7 @@
 
       <div class="md:w-1/2">
         <p class="text-lg text-black font-bold font-dancing">m'mmiere</p>
-        <h1 class="text-3xl md:text-2xl font-bold mb-3">{product.name_en}</h1>
+        <h1 class="text-3xl md:text-2xl font-bold mb-3">{locale === 'ro' && product.name_ro ? product.name_ro : product.name_en}</h1>
         <p class="text-sm font-semibold text-gray-800 mb-8">{product.price.toFixed(2)} RON</p> <!-- TODO: Convert to EUR € $ -->
         <div class="flex flex-col items-start justify-center mb-4 pt-4">
   {#if product.icon_path}
@@ -176,16 +175,18 @@
   {/if}
 </div>
 
-        {#if product.description_en}
+        {#if (locale === 'ro' && product.description_ro) || product.description_en}
           <div class="font-bold text-xs max-w-[50%] mb-6 mt-2 ">
-            {@html product.description_en}
+            {@html locale === 'ro' && product.description_ro ? product.description_ro : product.description_en}
           </div>
         {/if}
 
-        {#if product.application_description_en}
+        {#if (locale === 'ro' && product.application_description_ro) || product.application_description_en}
           <div class="prose prose-sm max-w-none mb-16 mt-6">
-            <p class="text-xs font-bold pt-4 w-[60%]">Application:</p>
-            <p class="text-xs pt-2 w-[85%] sm:w-[70%] leading-5 font-quicksand font-bold">{product.application_description_en}</p>
+            <p class="text-xs font-bold pt-4 w-[60%]">{$t('products.application')}:</p>
+            <p class="text-xs pt-2 w-[85%] sm:w-[70%] leading-5 font-quicksand font-bold">
+              {locale === 'ro' && product.application_description_ro ? product.application_description_ro : product.application_description_en}
+            </p>
           </div>
         {/if}
 

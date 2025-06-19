@@ -14,7 +14,8 @@ declare global {
 export type HealthEffect = {
   id: number;
   key: string;
-  label: string;
+  label_en: string;
+  label_ro: string;
   icon_name: string;
   description: string;
 };

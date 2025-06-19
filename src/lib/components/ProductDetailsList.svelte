@@ -24,9 +24,9 @@
       .from('mmm_products')
       .select(`
         *,
-        health_effects:mmm_product_effects(effect:mmm_health_effects(*))
+        health_effects:mmm_product_effects(effect:mmm_health_effects(id, icon_name, label_en, label_ro))
       `)
-      .order('name_en', { ascending: true });
+      .order(locale === 'ro' ? 'name_ro' : 'name_en', { ascending: true });
     
     if (fetchError) {
       error = $t('products.loadError');

@@ -1,8 +1,15 @@
 <script lang="ts">
   import type { HealthEffect } from '../../app.d';
   import { getProductImageUrl } from '$lib/supabase';
+  import { getLocale } from '$lib/i18n';
   export let effects: HealthEffect[] = [];
   export let heading: string = 'Positive Effects';
+  
+  // Get current locale for dynamic field selection
+  let locale = 'en';
+  const unsubscribe = getLocale().subscribe(value => {
+    locale = value;
+  });
 
   // Generate Supabase icon URLs for each effect
   $: iconUrls = effects.map(effect =>
@@ -19,12 +26,12 @@
       <div class="flex flex-col items-center text-center p-1 transition w-32">
         <img
           src={erroredIcons[i] ? '/health_icons/drop.png' : iconUrls[i]}
-          alt={effect.label}
+          alt={locale === 'ro' && effect.label_ro ? effect.label_ro : effect.label_en}
           class="w-8 h-8 mb-1"
           loading="lazy"
           on:error={() => erroredIcons[i] = true}
         />
-        <span class="text-xs mt-1 font-quicksand font-bold">{effect.label}</span>
+        <span class="text-xs mt-1 font-quicksand font-bold">{locale === 'ro' && effect.label_ro ? effect.label_ro : effect.label_en}</span>
       </div>
     {/each}
   </div>

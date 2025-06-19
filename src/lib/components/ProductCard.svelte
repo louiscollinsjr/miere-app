@@ -3,6 +3,7 @@
   import { getLocale } from '$lib/i18n';
   import { addToCart } from '$lib/stores/cart';
   import { getProductImageUrl } from '$lib/supabase';
+  import { onDestroy } from 'svelte';
 
   import type { Product } from '../../app.d';
   export let product: Product;
@@ -11,7 +12,9 @@
   let locale = 'en';
   const unsubscribe = getLocale().subscribe(value => {
     locale = value;
+    console.log('ProductCard - Current locale:', locale);
   });
+  onDestroy(() => unsubscribe());
 
   // Placeholder image if no image_path is provided
   const placeholderImage = 'https://via.placeholder.com/400x300.png?text=Miere+Delicioasa';
@@ -45,8 +48,8 @@
         <p class="text-sm text-gray-600 mt-1 line-clamp-2">
           {locale === 'ro' && product.description_ro ? product.description_ro : product.description_en}
         </p>
-        <span class="text-gray-600 text-xs">450g</span>
       {/if}
+      <span class="text-gray-600 text-xs">450g</span>
     </div>
   </a>
   <div class="p-4 mt-auto">

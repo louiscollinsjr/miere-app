@@ -8,11 +8,28 @@ const I18N_CONTEXT_KEY = 'i18n';
 register('en', () => import('./locales/en.json'));
 register('ro', () => import('./locales/ro.json'));
 
-const initialLocale = getLocaleFromNavigator() || 'en';
+// Normalize locale to just the language code (e.g., 'en-US' -> 'en', 'ro-RO' -> 'ro')
+function normalizeLocale(locale: string | null): string {
+  if (!locale) return 'en';
+  
+  // Extract just the language part before any dash
+  const normalizedLocale = locale.split('-')[0].toLowerCase();
+  
+  // Only return supported locales
+  return ['en', 'ro'].includes(normalizedLocale) ? normalizedLocale : 'en';
+}
+
+// Get browser locale and normalize it
+const browserLocale = getLocaleFromNavigator();
+console.log('Browser detected locale:', browserLocale);
+
+// Normalize the locale
+const initialLocale = normalizeLocale(browserLocale);
+console.log('Setting initial locale to:', initialLocale);
 
 // Initialize svelte-i18n
 init({
-  fallbackLocale: 'ro',
+  fallbackLocale: 'en', // Fallback to English when keys are missing
   initialLocale: initialLocale,
 });
 
