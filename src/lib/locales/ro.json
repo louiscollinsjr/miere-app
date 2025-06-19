@@ -30,6 +30,7 @@
     "featuredProductsSubtitle": "Selectate manual pentru tine. O degustare a celor mai populare și unice sortimente de miere."
   },
   "productDetail": {
+    "positiveEffects": "Efecte Pozitive",
     "notFound": "Produsul nu a fost găsit",
     "backToProducts": "← Înapoi la toate produsele",
     "lowStock": "Doar {count} rămase în stoc!",

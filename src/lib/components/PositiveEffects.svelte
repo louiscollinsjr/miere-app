@@ -2,9 +2,9 @@
   import type { HealthEffect } from '../../app.d';
   import { getProductImageUrl } from '$lib/supabase';
   import { getLocale } from '$lib/i18n';
+  import { t } from 'svelte-i18n';
   export let effects: HealthEffect[] = [];
-  export let heading: string = 'Positive Effects';
-  
+
   // Get current locale for dynamic field selection
   let locale = 'en';
   const unsubscribe = getLocale().subscribe(value => {
@@ -20,7 +20,7 @@
 
 {#if effects.length > 0}
   <section class="">
-  <h2 class="text-sm font-bold mb-4 text-quicksand">{heading}:</h2>
+  <h2 class="text-sm font-bold mb-4 text-quicksand">{$t('productDetail.positiveEffects')}:</h2>
   <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-4 gap-0.5 justify-start">
     {#each effects as effect, i (effect.id)}
       <div class="flex flex-col items-center text-center p-1 transition w-32">

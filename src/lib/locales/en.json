@@ -30,6 +30,7 @@
     "featuredProductsSubtitle": "Hand-selected for you. A taste of our most popular and unique honey varieties."
   },
   "productDetail": {
+    "positiveEffects": "Positive Effects",
     "notFound": "Product not found",
     "backToProducts": "← Back to all products",
     "lowStock": "Only {count} left in stock!",
